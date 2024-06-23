@@ -3,6 +3,9 @@ spring:
     name: Apigateway
   cloud:
     gateway:
+     discovery:
+        locator:
+          enabled: true
       routes:
       - id: user_service
         uri: lb://USERMS
