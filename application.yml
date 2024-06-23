@@ -3,26 +3,25 @@ spring:
     name: Apigateway
   cloud:
     gateway:
-     discovery:
+      discovery:
         locator:
           enabled: true
       routes:
-      - id: user_service
-        uri: lb://USERMS
-        predicates:
-        - Path=/api/v1.0/users/**
-      - id: mapping_error_service
-        uri: lb://MAPPING-ERRORMS
-        predicates:
-        - Path=/api/v1.0/mappingError/**
-
+        - id: user_service
+          uri: lb://USERMS
+          predicates:
+            - Path=/api/v1.0/users/**
+        - id: mapping_error_service
+          uri: lb://MAPPING-ERRORMS
+          predicates:
+            - Path=/api/v1.0/mappingError/**
 server:
-    port: 4443
+  port: 4443
 
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
-    react.netty.http.client: DEBUG
+    reactor.netty.http.client: DEBUG
 
 eureka:
   client:
