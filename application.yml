@@ -12,6 +12,10 @@ spring:
           uri: lb://MAPPING-ERRORMS
           predicates:
             - Path=/api/v1.0/mappingError/**
+        - id: iglesia_service
+          uri: lb://IGLESIAMS
+          predicates:
+            - Path=/api/v1.0/iglesias/**
 server:
   tomcat:
     accesslog:
