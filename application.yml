@@ -16,6 +16,10 @@ spring:
           uri: lb://IGLESIAMS
           predicates:
             - Path=/api/v1.0/iglesias/**
+        - id: email_service
+          uri: lb://EMAILMS
+          predicates:
+            - Path=/api/v1.0/emails/**
 server:
   tomcat:
     accesslog:
