@@ -23,12 +23,13 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
+            allowedOrigins: "*"
             allowedMethods:
               - GET
               - POST
               - PUT
               - DELETE
-              - OPTIONS
+              - OPTIONS  
             allowedHeaders:
               - "*"
 server:
