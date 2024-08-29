@@ -29,9 +29,7 @@ spring:
               - POST
               - PUT
               - DELETE
-              - OPTIONS  
-            allowedHeaders:
-              - "*"
+              - OPTIONS
 server:
   tomcat:
     accesslog:
