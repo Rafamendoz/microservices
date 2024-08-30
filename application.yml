@@ -23,7 +23,9 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "https://192.168.1.13:443"
+            allowedOrigins:
+              - "https://192.168.1.13:443"
+              - "http://192.168.1.48:8000"
             allowedMethods:
               - GET
               - POST
