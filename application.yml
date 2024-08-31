@@ -15,7 +15,7 @@ spring:
         - id: user_service
           uri: lb://USERMS
           predicates:
-            - Path=/api/v1.0/users/**
+            - Path=/api/profisca/v1.0/users/**
         - id: mapping_error_service
           uri: lb://MAPPING-ERRORMS
           predicates:
@@ -23,11 +23,11 @@ spring:
         - id: iglesia_service
           uri: lb://IGLESIAMS
           predicates:
-            - Path=/api/v1.0/iglesias/**
+            - Path=/api/profisca/v1.0/iglesias/**
         - id: email_service
           uri: lb://EMAILMS
           predicates:
-            - Path=/api/v1.0/emails/**
+            - Path=/api/profisca/v1.0/emails/**
         globalcors:
           cors-configurations:
             '[/**]':
