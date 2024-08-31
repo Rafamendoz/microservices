@@ -3,7 +3,8 @@ spring:
     name: Apigateway
   cloud:
     gateway:
-      routes:
+      mvc:
+        routes:
         - id: user_service
           uri: lb://USERMS
           predicates:
@@ -20,19 +21,19 @@ spring:
           uri: lb://EMAILMS
           predicates:
             - Path=/api/v1.0/emails/**
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins:
-              - "https://192.168.1.13:443"
-              - "http://192.168.1.48:8000"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-            allowedHeaders: '*'
-            maxAge: 30
+        globalcors:
+          cors-configurations:
+            '[/**]':
+              allowedOrigins:
+                - "https://192.168.1.13:443"
+                - "http://192.168.1.48:8000"
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+              allowedHeaders: '*'
+              maxAge: 30
 server:
   tomcat:
     accesslog:
