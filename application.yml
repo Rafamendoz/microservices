@@ -23,7 +23,6 @@ spring:
               - DELETE
             allowedHeaders: '*'
             maxAge: 3600  # Considera un valor mayor para maxAge
-      mvc:
         routes:
           - id: user_service
             uri: lb://USERMS
