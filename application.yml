@@ -1,8 +1,8 @@
 spring:
   datasource:
-      url: jdbc:postgresql://192.168.1.11:5432/middlewareqa
-      username: middlewareqa
-      password: desarrollo
+    url: jdbc:postgresql://192.168.1.11:5432/middlewareqa
+    username: middlewareqa
+    password: desarrollo
   jpa:
     hibernate:
       ddl-auto: none
@@ -12,42 +12,42 @@ spring:
     gateway:
       mvc:
         routes:
-        - id: user_service
-          uri: lb://USERMS
-          predicates:
-            - Path=/api/profisca/v1.0/users/**
-        - id: mapping_error_service
-          uri: lb://MAPPING-ERRORMS
-          predicates:
-            - Path=/api/v1.0/mappingError/**
-        - id: iglesia_service
-          uri: lb://IGLESIAMS
-          predicates:
-            - Path=/api/profisca/v1.0/iglesias/**
-        - id: email_service
-          uri: lb://EMAILMS
-          predicates:
-            - Path=/api/profisca/v1.0/emails/**
-        globalcors:
-          cors-configurations:
-            '[/**]':
-              allowedOrigins:
-                - "https://192.168.1.13:443"
-                - "http://192.168.1.48:8000"
-              allowedMethods:
-                - GET
-                - POST
-                - PUT
-                - DELETE
-              allowedHeaders: '*'
-              maxAge: 30
+          - id: user_service
+            uri: lb://USERMS
+            predicates:
+              - Path=/api/profisca/v1.0/users/**
+          - id: mapping_error_service
+            uri: lb://MAPPING-ERRORMS
+            predicates:
+              - Path=/api/v1.0/mappingError/**
+          - id: iglesia_service
+            uri: lb://IGLESIAMS
+            predicates:
+              - Path=/api/profisca/v1.0/iglesias/**
+          - id: email_service
+            uri: lb://EMAILMS
+            predicates:
+              - Path=/api/profisca/v1.0/emails/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "https://192.168.1.13:443"
+              - "http://192.168.1.48:8000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders: '*'
+            maxAge: 30
 server:
   tomcat:
     accesslog:
       enabled: true
       directory: /tmp/logs
       prefix: apigateway_access_log.
-      sufix: .log
+      suffix: .log  # Corrección de typo: "sufix" a "suffix"
   port: 4443
 
 logging:
@@ -58,4 +58,4 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://192.168.1.10:8761/eureka}
+      defaultZone: ${EUREKA_SERVER:http://192.168.1.10:8762/eureka}
