@@ -10,6 +10,19 @@ spring:
     name: Apigateway
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "https://192.168.1.13:443"
+              - "http://192.168.1.48:8000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders: '*'
+            maxAge: 3600  # Considera un valor mayor para maxAge
       mvc:
         routes:
           - id: user_service
@@ -28,26 +41,13 @@ spring:
             uri: lb://EMAILMS
             predicates:
               - Path=/api/profisca/v1.0/emails/**
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins:
-              - "https://192.168.1.13:443"
-              - "http://192.168.1.48:8000"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-            allowedHeaders: '*'
-            maxAge: 30
 server:
   tomcat:
     accesslog:
       enabled: true
       directory: /tmp/logs
       prefix: apigateway_access_log.
-      suffix: .log  # Corrección de typo: "sufix" a "suffix"
+      suffix: .log  # Corrección de typo
   port: 4443
 
 logging:
