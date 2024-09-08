@@ -28,6 +28,10 @@ spring:
             uri: lb://EMAILMS
             predicates:
               - Path=/api/profisca/v1.0/emails/**
+          - id: socios_service
+            uri: lb://SOCIOMS
+            predicates:
+              - Path=/api/profisca/v1.0/socios/**
 server:
   tomcat:
     accesslog:
