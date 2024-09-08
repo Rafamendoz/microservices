@@ -29,7 +29,7 @@ spring:
             predicates:
               - Path=/api/profisca/v1.0/emails/**
           - id: socios_service
-            uri: lb://SOCIOMS
+            uri: lb://SOCIOSMS
             predicates:
               - Path=/api/profisca/v1.0/socios/**
 server:
