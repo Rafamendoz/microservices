@@ -8,6 +8,38 @@ spring:
       ddl-auto: none
   application:
     name: Apigateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: user_service
+            uri: lb://USERMS
+            predicates:
+              - Path=/api/profisca/v1.0/users/**
+          - id: mapping_error_service
+            uri: lb://MAPPING-ERRORMS
+            predicates:
+              - Path=/api/v1.0/mappingError/**
+          - id: iglesia_service
+            uri: lb://IGLESIAMS
+            predicates:
+              - Path=/api/profisca/v1.0/iglesias/**
+          - id: email_service
+            uri: lb://EMAILMS
+            predicates:
+              - Path=/api/profisca/v1.0/emails/**
+          - id: socios_service
+            uri: lb://SOCIOSMS
+            predicates:
+              - Path=/api/profisca/v1.0/socios/**
+         - id: municipio_service
+            uri: lb://MUNICIPIOMS
+            predicates:
+              - Path=/api/profisca/v1.0/municipios/**
+         - id: departamento_service
+            uri: lb://DEPARTAMENTOMS
+            predicates:
+              - Path=/api/profisca/v1.0/departamentos/**
 server:
   tomcat:
     accesslog:
