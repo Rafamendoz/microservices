@@ -3,9 +3,6 @@ spring:
     url: jdbc:postgresql://192.168.1.11:5432/middlewareqa
     username: middlewareqa
     password: desarrollo
-  jpa:
-    hibernate:
-      ddl-auto: none
   application:
     name: Apigateway
   cloud:
@@ -32,14 +29,15 @@ spring:
             uri: lb://SOCIOSMS
             predicates:
               - Path=/api/profisca/v1.0/socios/**
-         - id: municipio_service
+		      - id: municipio_service
             uri: lb://MUNICIPIOMS
             predicates:
               - Path=/api/profisca/v1.0/municipios/**
-         - id: departamento_service
+          - id: departamento_service
             uri: lb://DEPARTAMENTOMS
             predicates:
               - Path=/api/profisca/v1.0/departamentos/**
+			
 server:
   tomcat:
     accesslog:
