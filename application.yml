@@ -29,7 +29,7 @@ spring:
             uri: lb://SOCIOSMS
             predicates:
               - Path=/api/profisca/v1.0/socios/**
-		      - id: municipio_service
+          - id: municipio_service
             uri: lb://MUNICIPIOMS
             predicates:
               - Path=/api/profisca/v1.0/municipios/**
@@ -44,7 +44,7 @@ server:
       enabled: true
       directory: /tmp/logs
       prefix: apigateway_access_log.
-      suffix: .log  # Corrección de typo
+      suffix: .log
   port: 4443
 
 logging:
