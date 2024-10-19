@@ -1,30 +1,58 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://192.168.1.11:5432/middlewareqa
+    username: middlewareqa
+    password: desarrollo
   application:
     name: Apigateway
   cloud:
     gateway:
-     discovery:
-        locator:
-          enabled: true
-      routes:
-      - id: user_service
-        uri: lb://USERMS
-        predicates:
-        - Path=/api/v1.0/users/**
-      - id: mapping_error_service
-        uri: lb://MAPPING-ERRORMS
-        predicates:
-        - Path=/api/v1.0/mappingError/**
-
+      mvc:
+        routes:
+          - id: user_service
+            uri: lb://USERMS
+            predicates:
+              - Path=/api/profisca/v1.0/users/**
+          - id: mapping_error_service
+            uri: lb://MAPPING-ERRORMS
+            predicates:
+              - Path=/api/v1.0/mappingError/**
+          - id: iglesia_service
+            uri: lb://IGLESIAMS
+            predicates:
+              - Path=/api/profisca/v1.0/iglesias/**
+          - id: email_service
+            uri: lb://EMAILMS
+            predicates:
+              - Path=/api/profisca/v1.0/emails/**
+          - id: socios_service
+            uri: lb://SOCIOSMS
+            predicates:
+              - Path=/api/profisca/v1.0/socios/**
+          - id: municipio_service
+            uri: lb://MUNICIPIOMS
+            predicates:
+              - Path=/api/profisca/v1.0/municipios/**
+          - id: departamento_service
+            uri: lb://DEPARTAMENTOMS
+            predicates:
+              - Path=/api/profisca/v1.0/departamentos/**
+			
 server:
-    port: 4443
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /tmp/logs
+      prefix: apigateway_access_log.
+      suffix: .log
+  port: 4443
 
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
-    react.netty.http.client: DEBUG
+    reactor.netty.http.client: DEBUG
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://192.168.1.10:8761/eureka}
+      defaultZone: ${EUREKA_SERVER:http://192.168.1.10:8761/admin/eureka/eureka}
