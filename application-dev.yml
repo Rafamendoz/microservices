@@ -37,7 +37,6 @@ spring:
             uri: lb://DEPARTAMENTOMS
             predicates:
               - Path=/api/profisca/v1.0/departamentos/**
-			
 server:
   tomcat:
     accesslog:
